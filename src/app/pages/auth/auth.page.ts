@@ -35,6 +35,7 @@ export class AuthPage {
 
       this.firebaseSvc.login(this.form.value as User).then(res => {
         console.log(res);
+        localStorage.setItem('uid', res.user.uid); 
         this.getUserInfo(res.user.uid)
         
       }).catch(error =>{

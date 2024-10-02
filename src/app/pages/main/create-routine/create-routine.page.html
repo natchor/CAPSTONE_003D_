@@ -1,0 +1,48 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="volver()">
+        <ion-icon slot="icon-only" name="arrow-back"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Crear Rutina</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form [formGroup]="routineForm" (ngSubmit)="enviar_rutina()">
+    <ion-list>
+
+      <ion-item>
+        <ion-label position="floating">Nombre de la actividad</ion-label>
+        <ion-input type="text" formControlName="nombre_actividad"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Día</ion-label>
+        <ion-select formControlName="dia" placeholder="Selecciona un día">
+          <ion-select-option value="lunes">Lunes</ion-select-option>
+          <ion-select-option value="martes">Martes</ion-select-option>
+          <ion-select-option value="miércoles">Miércoles</ion-select-option>
+          <ion-select-option value="jueves">Jueves</ion-select-option>
+          <ion-select-option value="viernes">Viernes</ion-select-option>
+          <ion-select-option value="sábado">Sábado</ion-select-option>
+          <ion-select-option value="domingo">Domingo</ion-select-option>
+        </ion-select>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">Hora de inicio</ion-label>
+        <ion-datetime display-format="HH:mm" picker-format="HH:mm" formControlName="hora_inicio" presentation="time"></ion-datetime>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">Hora de fin</ion-label>
+        <ion-datetime display-format="HH:mm" picker-format="HH:mm" formControlName="hora_fin" presentation="time"></ion-datetime>
+      </ion-item>
+
+    </ion-list>
+
+    <ion-button expand="block" type="submit" [disabled]="!routineForm.valid">Crear rutina</ion-button>
+  </form>
+</ion-content>
