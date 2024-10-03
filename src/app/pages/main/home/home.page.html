@@ -1,0 +1,31 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="openMenu()">
+        <ion-icon slot="icon-only" name="menu"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Home</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="logout()">
+        <ion-icon slot="icon-only" name="log-out"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-menu side="start" menuId="first" contentId="main-content">
+    <ion-content>
+      <ion-list>
+        <ion-item (click)="navigateTo('profile')">Profile</ion-item>
+        <ion-item (click)="navigateTo('settings')">Settings</ion-item>
+        <ion-item (click)="navigateTo('about')">About</ion-item>
+      </ion-list>
+    </ion-content>
+  </ion-menu>
+
+  <div id="main-content">
+    <!-- Your main content goes here -->
+  </div>
+</ion-content>
