@@ -1,0 +1,63 @@
+/* home.page.scss */
+
+ion-toolbar {
+    --background: #ffd1dc; /* Rosa pastel */
+    --color: #333; /* Texto oscuro */
+    animation: toolbarFadeIn 1s ease-in-out;
+  }
+  
+  ion-title {
+    text-align: center;
+  }
+  
+  ion-button {
+    --background: #a3d8f4; /* Azul pastel */
+    --background-hover: #92cce1; /* Azul pastel más oscuro */
+    --background-activated: #92cce1; /* Azul pastel más oscuro */
+    --color: #ffffff; /* Texto blanco */
+    animation: buttonFadeIn 1s ease-in-out;
+  }
+  
+  ion-menu {
+    --background: #f7f7f7; /* Fondo claro */
+  }
+  
+  ion-item {
+    --background: #e0f7fa; /* Fondo azul pastel */
+    --color: #333; /* Color de texto oscuro */
+    border-radius: 5px;
+    animation: itemFadeIn 1s ease-in-out;
+  }
+  
+  @keyframes toolbarFadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  @keyframes buttonFadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  @keyframes itemFadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
