@@ -1,0 +1,39 @@
+<ion-menu side="start" menuId="first" contentId="main-content">
+  <ion-header>
+    <ion-toolbar color="primary">
+      <ion-title>Menu</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content>
+    <ion-list>
+      <ion-item button routerLink="../create-routine">
+        <ion-icon slot="start" name="create-outline"></ion-icon>
+        Crear una Rutina
+      </ion-item>
+      <ion-item button routerLink="../perfil">
+        <ion-icon slot="start" name="person-outline"></ion-icon>
+        Perfil
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-menu>
+
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Home</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="logout()">
+        <ion-icon slot="icon-only" name="log-out-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" id="main-content">
+  <div class="container">
+    <h1>Welcome to the Home Page!</h1>
+  </div>
+</ion-content>
