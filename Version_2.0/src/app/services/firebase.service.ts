@@ -5,6 +5,7 @@ import { User } from '../models/user.model';
 import { AngularFirestore } from '@angular/fire/compat/firestore'
 import { getFirestore, setDoc, doc, getDoc } from '@angular/fire/firestore'
 import { UtilsService } from './utils.service';
+import { collection, addDoc} from 'firebase/firestore'; // Mantén esto para Firestore
 
 @Injectable({
   providedIn: 'root'
@@ -52,5 +53,31 @@ export class FirebaseService {
     localStorage.removeItem('user');
     this.utilScv.routerLink('/auth');
   }
+  
+  // Crear rutina
+  guardarRutina(userId: string, dia: string, rutina: any) {
+    const userRef = doc(this.firestore.firestore, `users/${userId}`); // Documento del usuario
+    const diaRef = collection(userRef, `rutina_semanal/${dia}/actividades`); // Colección de actividades para el día
+
+    // Extraer solo la hora de inicio y fin, ignorando la fecha
+    const horaInicio = rutina.hora_inicio.split('T')[1]; // Esto extrae solo la hora
+    const horaFin = rutina.hora_fin.split('T')[1];
+
+    // Reemplazamos los valores de hora_inicio y hora_fin por solo las horas
+    const rutinaActualizada = {
+      ...rutina,
+      hora_inicio: horaInicio,
+      hora_fin: horaFin,
+    };
+
+    // Guardar la rutina como un documento en la colección de actividades
+    return addDoc(diaRef, rutinaActualizada).then((docRef) => {
+        console.log('Rutina agregada exitosamente para el día:', dia, 'ID:', docRef.id);
+    }).catch((error) => {
+        console.error('Error al agregar la rutina:', error);
+    });
+}
 
 }
+
+

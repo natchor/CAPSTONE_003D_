@@ -16,6 +16,10 @@ const routes: Routes = [
     path: 'perfil',
     loadChildren: () => import('./perfil/perfil.module').then( m => m.PerfilPageModule),
     
+  },
+  {
+    path: 'create-routine',
+    loadChildren: () => import('./create-routine/create-routine.module').then( m => m.CreateRoutinePageModule)
   }
 
 ];
