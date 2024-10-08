@@ -18,4 +18,6 @@ import { CreateRoutinePage } from './create-routine.page';
   ],
   declarations: [CreateRoutinePage]
 })
-export class CreateRoutinePageModule {}
+export class CreateRoutinePageModule {
+
+}

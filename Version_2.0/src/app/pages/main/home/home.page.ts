@@ -3,6 +3,7 @@ import { FirebaseService } from 'src/app/services/firebase.service';
 import { UtilsService } from 'src/app/services/utils.service';
 import { MenuController } from '@ionic/angular';
 import { Router } from '@angular/router';
+
 @Component({
   selector: 'app-home',
   templateUrl: './home.page.html',
@@ -11,16 +12,7 @@ import { Router } from '@angular/router';
 export class HomePage implements OnInit {
   firebaseSvc=inject(FirebaseService)
   utilScv=inject(UtilsService)
-constructor(private menu: MenuController, private router: Router) {}
 
-  openMenu() {
-    this.menu.open('first');
-  }
-
-  navigateTo(page: string) {
-    this.menu.close('first');
-    this.router.navigate([`/${page}`]);
-  }
   ngOnInit() {
   }
 
@@ -31,3 +23,4 @@ constructor(private menu: MenuController, private router: Router) {}
   }
 
 }
+
