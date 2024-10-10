@@ -12,3 +12,14 @@
     cerrar sesión
   </ion-button>
 </ion-content>
+
+<ion-content>
+  <ion-list>
+    <ion-item *ngFor="let rutina of rutinas">
+      <h2>{{ rutina.nombre_actividad }}</h2>
+      <p>Día: {{ rutina.dia }}</p>
+      <p>Hora de inicio: {{ rutina.hora_inicio }}</p>
+      <p>Hora de fin: {{ rutina.hora_fin }}</p>
+    </ion-item>
+  </ion-list>
+</ion-content>

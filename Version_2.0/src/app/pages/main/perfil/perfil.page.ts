@@ -8,7 +8,7 @@ import { UtilsService } from 'src/app/services/utils.service';
   templateUrl: './perfil.page.html',
   styleUrls: ['./perfil.page.scss'],
 })
-export class PerfilPage implements OnInit{
+export class PerfilPage implements OnInit {
   profileForm: FormGroup;
   userId: string | null = null; // Inicializar como null
   isEditing = {
@@ -88,4 +88,3 @@ export class PerfilPage implements OnInit{
     }
   }
 }
-
