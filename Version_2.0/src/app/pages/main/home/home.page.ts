@@ -11,25 +11,36 @@ import { Rutina } from 'src/app/models/rutina.models';
   styleUrls: ['./home.page.scss'],
 })
 export class HomePage implements OnInit {
-  firebaseSvc=inject(FirebaseService)
-  utilScv=inject(UtilsService)
+
   rutinas: Rutina[] = [];
-  userId: string;
+  userId: string | null = null; 
 
+  constructor(private firebaseSvc: FirebaseService, private utilScv: UtilsService) {}
 
-  constructor(private rutinaService: RutinaService) {}
 
   ngOnInit() {
-    this.userId = localStorage.getItem('uid'); // Asegúrate de que el UID esté disponible
-    this.cargarRutinas();
+    this.loadUserId();
+    this.getRutinas(); // Llamar a la función para obtener rutinas
   }
-  async cargarRutinas() {
-    const dia = 'lunes'; // Puedes hacer esto dinámico si quieres
-    try {
-      this.rutinas = await this.firebaseSvc.getRutinasDelDia(this.userId, dia);
-      console.log("Rutinas del día:", this.rutinas);
-    } catch (error) {
-      console.error('Error al cargar las rutinas:', error);
+
+  private loadUserId() {
+    this.userId = localStorage.getItem('uid');
+  }
+
+  private async getRutinas() {
+    if (!this.userId) {
+      this.utilScv.presentToast({ message: 'Error: No se encontró el ID de usuario', duration: 3000 });
+      return;
+    }
+
+    const dias = ['lunes', 'martes', 'miércoles', 'jueves', 'viernes', 'sábado', 'domingo'];
+    for (const dia of dias) {
+      try {
+        const actividades = await this.firebaseSvc.getRutinasDelDia(this.userId, dia);
+        this.rutinas = [...this.rutinas, ...actividades]; // Agregar las actividades a la lista de rutinas
+      } catch (error) {
+        console.error(`Error al obtener rutinas del día ${dia}:`, error);
+      }
     }
   }
   logout(){

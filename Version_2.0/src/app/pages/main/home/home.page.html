@@ -13,13 +13,15 @@
   </ion-button>
 </ion-content>
 
-<ion-content>
+<ion-content class="ion-padding">
   <ion-list>
     <ion-item *ngFor="let rutina of rutinas">
-      <h2>{{ rutina.nombre_actividad }}</h2>
-      <p>Día: {{ rutina.dia }}</p>
-      <p>Hora de inicio: {{ rutina.hora_inicio }}</p>
-      <p>Hora de fin: {{ rutina.hora_fin }}</p>
+      <ion-label>
+        <h2>{{ rutina.nombre_actividad }}</h2>
+        <p>Día: {{ rutina.dia }}</p>
+        <p>Inicio: {{ rutina.hora_inicio }}</p>
+        <p>Fin: {{ rutina.hora_fin }}</p>
+      </ion-label>
     </ion-item>
   </ion-list>
 </ion-content>
