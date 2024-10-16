@@ -1,27 +1,28 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>Login</ion-title>
-  </ion-toolbar>
-</ion-header>
 
-<ion-content>
-  <div class="d-flex-center">
+<ion-content class="login-content">
+  <div class="container">
+    <!-- Logo y Título centrados -->
+    <div class="logo-container">
+      <img src="assets/logo-app.jpg" alt="Logo" class="logo">
+      <h1>Iniciar sesión</h1>
+    </div>
+
     <form [formGroup]="form" (ngSubmit)="submit()">
-      <ion-item>
-        <ion-label position="floating">Email</ion-label>
+      <ion-item class="input-item" lines="none">
+        <ion-label position="floating">Correo electrónico</ion-label>
         <ion-input type="email" formControlName="email" required></ion-input>
       </ion-item>
       <div class="error-message" *ngIf="form.get('email')?.touched && form.get('email')?.errors?.['required']">
-        El correo es requerido
+        El correo electrónico es requerido
       </div>
       <div class="error-message" *ngIf="form.get('email')?.touched && form.get('email')?.errors?.['email']">
-        Ingrese un correo válido
+        Ingrese un correo electrónico válido
       </div>
-      
-      <ion-item>
-        <ion-label position="floating">Password</ion-label>
+
+      <ion-item class="input-item" lines="none">
+        <ion-label position="floating">Contraseña</ion-label>
         <ion-input [type]="passwordType" formControlName="password" required></ion-input>
-        <ion-button (click)="mostrar_contra()" slot="end" fill="clear" shape="round">
+        <ion-button (click)="mostrar_contra()" slot="end" fill="clear">
           <ion-icon [name]="passwordIcon"></ion-icon>
         </ion-button>
       </ion-item>
@@ -31,9 +32,9 @@
       <div class="error-message" *ngIf="form.get('password')?.touched && form.get('password')?.errors?.['minlength']">
         La contraseña debe contener un mínimo de 6 caracteres
       </div>
-      
-      <ion-button expand="full" type="submit" [disabled]="form.invalid">Ingresar</ion-button>
-      <ion-button routerLink="registro" expand="full">Regístrate</ion-button>
+
+      <ion-button class="login-btn" expand="full" type="submit" [disabled]="form.invalid">Ingresar</ion-button>
+      <ion-button class="register-btn" routerLink="registro" expand="full">Regístrate</ion-button>
     </form>
-  </div> 
+  </div>
 </ion-content>

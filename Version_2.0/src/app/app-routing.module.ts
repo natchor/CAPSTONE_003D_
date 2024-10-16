@@ -3,6 +3,9 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { noAuthGuard } from './guards/no-auth.guard';
 import { authGuard } from './guards/auth.guard';
 import { PerfilPage } from './pages/main/perfil/perfil.page';
+import { BrowserModule } from '@angular/platform-browser';
+import { FullCalendarModule } from '@fullcalendar/angular'; // Importa el módulo aquí
+
 const routes: Routes = [
 
   {
@@ -24,8 +27,10 @@ const routes: Routes = [
 
 @NgModule({
   imports: [
-    RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules })
-  ],
+    RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules ,})
+  ,  BrowserModule,
+  FullCalendarModule, 
+], 
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

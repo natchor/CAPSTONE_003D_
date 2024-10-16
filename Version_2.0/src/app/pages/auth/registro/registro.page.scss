@@ -1,145 +1,213 @@
-/* login.page.scss */
+.registro-content {
+  background-color: #f4f4f4; /* Color de fondo claro */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  padding: 20px;
+}
+
+.container {
+  width: 100%;
+  max-width: 400px;
+}
+
+.registro-title {
+  text-align: center;
+  font-size: 2.5em; /* Tamaño de fuente grande */
+  color: #000000; /* Color negro */
+  font-weight: bold;
+  margin-bottom: 20px;
+}
 
 .d-flex-center {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100%;
-    padding: 20px;
-    background-color: #f7f7f7; /* Fondo claro */
+  background-color: #ffffff; /* Blanco para el formulario */
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+ion-item {
+  --background: transparent;
+  --highlight-color-focused: #4caf50; /* Verde claro */
+  --placeholder-color: rgba(0, 0, 0, 0.6); /* Placeholder en negro */
+  --color: #000000; /* Texto en negro */
+  margin-bottom: 15px;
+  font-size: 1em;
+}
+
+ion-label, ion-input, ion-button, .login-text {
+  color: #000000; /* Color de texto en negro */
+}
+
+ion-input {
+  --color: #000000; /* Texto ingresado en negro */
+}
+
+.error-message {
+  color: #f44336;
+  font-size: 12px;
+  margin-top: 5px;
+  text-align: left;
+}
+
+ion-button {
+  --background: #4caf50;
+  color: #ffffff;
+  margin-top: 20px;
+  border-radius: 10px;
+  font-weight: bold;
+  padding: 1em;
+  font-size: 1em;
+  transition: transform 0.2s;
+}
+
+ion-button:hover {
+  transform: scale(1.05);
+}
+
+.login-text {
+  margin-top: 20px;
+  font-size: 0.9em;
+}
+
+.login-text a {
+  color: #4caf50;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.login-text a:hover {
+  text-decoration: underline;
+}
+
+/* Responsive para pantallas pequeñas */
+@media screen and (max-width: 600px) {
+  .d-flex-center {
+    padding: 15px;
   }
-  
-  form {
-    width: 100%;
-    max-width: 400px;
-    background-color: #ffffff; /* Fondo blanco */
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    animation: fadeIn 1s ease-in-out;
-  }
-  
-  ion-item {
-    margin-bottom: 15px;
-    --background: #e0f7fa; /* Fondo azul pastel */
-    --color: #333; /* Color de texto oscuro */
-    border-radius: 5px;
-    --highlight-color-focused: #a3d8f4; /* Color pastel para el borde cuando está enfocado */
-    animation: itemFadeIn 1s ease-in-out;
-  }
-  
-  ion-input {
-    --background: transparent; /* Fondo transparente para que se vea el fondo del ion-item */
-    --placeholder-color: #666; /* Color de placeholder */
-    --color: #333; /* Color de texto oscuro */
-    --padding-start: 10px;
-    --padding-end: 10px;
-  }
-  
-  .error-message {
-    color: #ff6f61; /* Color pastel para mensajes de error */
-    font-size: 14px;
-    margin-top: -10px;
-    margin-bottom: 10px;
-    padding-left: 10px;
-  }
-  
+
   ion-button {
-    margin-top: 15px;
-    --background: #a3d8f4; /* Azul pastel */
-    --background-hover: #92cce1; /* Azul pastel más oscuro */
-    --background-activated: #92cce1; /* Azul pastel más oscuro */
-    --color: #ffffff; /* Texto blanco */
-    animation: buttonFadeIn 1s ease-in-out;
+    font-size: 0.9em;
+    padding: 0.8em;
   }
-  
-  ion-button:last-child {
-    margin-top: 10px;
-    --background: #ffb3ba; /* Rosa pastel */
-    --background-hover: #ffa3a9; /* Rosa pastel más oscuro */
-    --background-activated: #ffa3a9; /* Rosa pastel más oscuro */
+}
+
+
+.registro-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  background-color: #f0f4f8; /* Fondo claro */
+  padding: 10%;
+}
+
+.container {
+  width: 100%;
+  max-width: 400px;
+  text-align: center;
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
+  animation: fadeIn 1s ease-in-out;
+}
+
+h1 {
+  font-size: 2.5em; /* Tamaño grande para el título */
+  color: #000000; /* Letras en negro */
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.input-item {
+  --background: transparent;
+  --highlight-color-focused: #4caf50;
+  --placeholder-color: rgba(0, 0, 0, 0.6);
+  margin-bottom: 15px;
+  font-size: 1em;
+  animation: slideInUp 0.8s ease-in-out;
+}
+
+ion-input {
+  --color: #000000; /* Color del texto ingresado (negro) */
+  --placeholder-color: rgba(0, 0, 0, 0.6); /* Placeholder en negro claro */
+  font-size: 1em;
+}
+
+.error-message {
+  color: #f44336;
+  font-size: 12px;
+  margin-top: 5px;
+  text-align: left;
+}
+
+.register-btn {
+  --background: #4caf50; /* Verde claro */
+  color: #ffffff;
+  margin-top: 20px;
+  border-radius: 10px;
+  font-weight: bold;
+  animation: slideInUp 1s ease-in-out;
+  transition: transform 0.2s;
+  padding: 1em;
+  font-size: 1em;
+}
+
+.register-btn:hover {
+  transform: scale(1.05);
+}
+
+.login-text {
+  margin-top: 20px;
+  font-size: 0.9em;
+  color: #000000; /* Texto negro */
+}
+
+.login-text a {
+  color: #4caf50; /* Enlace verde claro */
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.login-text a:hover {
+  text-decoration: underline;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
   }
-  
-  ion-button[disabled] {
-    --background: #d3d3d3; /* Gris claro */
+  to {
+    opacity: 1;
   }
-  
-  ion-label {
-    color: #333; /* Color de texto oscuro */
-    animation: labelFadeIn 1s ease-in-out;
+}
+
+@keyframes slideInUp {
+  from {
+    transform: translateY(100px);
+    opacity: 0;
   }
-  
-  ion-toolbar {
-    --background: #ffd1dc; /* Rosa pastel */
-    --color: #333; /* Texto oscuro */
-    animation: toolbarFadeIn 1s ease-in-out;
+  to {
+    transform: translateY(0);
+    opacity: 1;
   }
-  
-  ion-title {
-    text-align: center;
+}
+
+/* Adaptación responsiva para pantallas pequeñas */
+@media screen and (max-width: 600px) {
+  h1 {
+    font-size: 1.5em; /* Ajustar tamaño para pantallas pequeñas */
   }
-  
-  /* Animaciones */
-  @keyframes fadeIn {
-    from {
-      opacity: 0;
-    }
-    to {
-      opacity: 1;
-    }
+
+  .register-btn {
+    font-size: 0.9em;
+    padding: 0.8em;
   }
-  
-  @keyframes itemFadeIn {
-    from {
-      opacity: 0;
-      transform: translateY(-10px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
+
+  .container {
+    padding: 15px;
   }
-  
-  @keyframes inputFadeIn {
-    from {
-      opacity: 0;
-      transform: translateY(-10px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-  
-  @keyframes buttonFadeIn {
-    from {
-      opacity: 0;
-      transform: translateY(10px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-  
-  @keyframes labelFadeIn {
-    from {
-      opacity: 0;
-      transform: translateX(-10px);
-    }
-    to {
-      opacity: 1;
-      transform: translateX(0);
-    }
-  }
-  
-  @keyframes toolbarFadeIn {
-    from {
-      opacity: 0;
-      transform: translateY(-10px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
+}

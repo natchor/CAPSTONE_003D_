@@ -1,0 +1,143 @@
+/* Estilos generales */
+body {
+    background-color: #f0f4f8; /* Fondo suave para todo */
+  }
+  
+  /* Estilos para el header */
+  .header-container {
+    background-color: #b2dfdb; /* Color verde claro del header */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Sombra del header */
+  }
+  
+  /* Estilos para el título */
+  .header-title {
+    color: #004d40; /* Color oscuro para el título */
+    text-align: center; /* Centra el título */
+  }
+  
+  /* Estilos para los botones del menú y cerrar sesión */
+  .menu-button,
+  .logout-button {
+    background-color: #ffffff; /* Fondo blanco para los botones */
+    color: #00796b; /* Color verde oscuro para el texto de los botones */
+    border-radius: 8px; /* Bordes redondeados */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Sombra para los botones */
+    transition: transform 0.3s; /* Animación de transformación */
+    margin: 0 10px; /* Espacio entre los botones */
+  }
+  
+  .menu-button:hover,
+  .logout-button:hover {
+    transform: scale(1.05); /* Efecto de aumento al pasar el mouse */
+  }
+  
+  /* Estilos para el menú desplegable */
+  .menu-container {
+    position: absolute;
+    top: 56px; /* Justo debajo del header */
+    left: 0;
+    width: 100%;
+    z-index: 10; /* Asegura que el menú esté por encima de otros elementos */
+    opacity: 0; /* Inicialmente oculto */
+    transform: translateY(-10px); /* Desplazamiento inicial */
+    transition: opacity 0.3s, transform 0.3s; /* Transiciones suaves */
+  }
+  
+  /* Mostrar menú con animación */
+  .menu-container.ng-enter {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  .menu-container.ng-enter-active {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  /* Estilos para la lista del menú */
+  .menu-list {
+    background-color: #ffffff; /* Fondo blanco */
+    border-radius: 8px; /* Bordes redondeados */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Sombra para profundidad */
+    padding: 10px; /* Espaciado interno */
+  }
+  
+  /* Estilos para los ítems del menú */
+  .menu-item {
+    color: #00796b; /* Texto verde oscuro */
+    transition: background-color 0.3s; /* Transición para el fondo */
+    margin: 5px 0; /* Separación entre ítems del menú */
+    padding: 10px; /* Espaciado interno */
+  }
+  
+  .menu-item:hover {
+    background-color: #e0f2f1; /* Fondo verde claro al pasar el mouse */
+  }
+  
+  /* Estilos para los íconos del menú */
+  .menu-icon {
+    color: #00796b; /* Color verde oscuro para los íconos */
+  }
+  
+  /* Estilos para el card principal */
+  .main-card {
+    background-color: #b2dfdb; /* Color verde claro del card */
+    border-radius: 10px; /* Bordes redondeados */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Sombra del card */
+    margin: 16px; /* Margen alrededor del card */
+    padding: 16px; /* Espaciado interno */
+  }
+  
+  /* Estilos para el contenedor de ng-container */
+  .ng-container {
+    background-color: #ffffff; /* Fondo blanco para el contenedor */
+    border-radius: 8px; /* Bordes redondeados */
+    padding: 10px; /* Espaciado interno */
+    color: #004d40; /* Texto en verde oscuro */
+  }
+  
+  /* Estilos para los ítems de rutina */
+  .routine-item {
+    transition: transform 0.3s, box-shadow 0.3s; /* Transiciones suaves */
+    background-color: #e0f2f1; /* Fondo verde muy claro */
+    border-radius: 8px; /* Bordes redondeados */
+    padding: 10px; /* Espaciado interno */
+    margin: 5px 0; /* Separación entre ítems de rutina */
+  }
+  
+  .routine-item:hover {
+    transform: scale(1.02); /* Efecto de aumento al pasar el mouse */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Sombra más intensa al pasar el mouse */
+  }
+  
+  /* Estilos para animaciones */
+  .animated-menu {
+    animation: fadeIn 0.5s; /* Animación de aparición */
+  }
+  
+  /* Animación de desvanecimiento */
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  .animated-item {
+    animation: slideIn 0.3s; /* Animación de entrada para los items */
+  }
+  
+  @keyframes slideIn {
+    from {
+      transform: translateX(-20px);
+      opacity: 0;
+    }
+    to {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+  

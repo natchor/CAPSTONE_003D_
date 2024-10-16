@@ -1,145 +1,132 @@
-/* login.page.scss */
+.login-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  background-color: #f0f4f8; /* Verde claro */
+  padding: 10%;
+}
 
-.d-flex-center {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100%;
-    padding: 20px;
-    background-color: #f7f7f7; /* Fondo claro */
+.container {
+  width: 100%;
+  max-width: 400px;
+  text-align: center;
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
+  animation: fadeIn 1s ease-in-out;
+}
+
+.logo-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.logo {
+  width: 30vw;
+  height: auto;
+  max-width: 120px;
+  margin-bottom: 10px;
+  animation: bounceIn 1s ease-in-out;
+}
+
+h1 {
+  font-size: 1.5em;
+  color: #000000; /* Letras en negro */
+  font-weight: bold;
+}
+
+.input-item {
+  --background: transparent;
+  --highlight-color-focused: #4caf50;
+  --placeholder-color: rgba(0, 0, 0, 0.6);
+  margin-bottom: 15px;
+  font-size: 1em;
+  animation: slideInUp 0.8s ease-in-out;
+}
+
+ion-input {
+  --color: #000000; /* Color del texto ingresado (negro) */
+  --placeholder-color: rgba(0, 0, 0, 0.6); /* Placeholder en negro claro */
+  font-size: 1em;
+}
+
+.error-message {
+  color: #f44336;
+  font-size: 12px;
+  margin-top: 5px;
+  text-align: left;
+}
+
+.login-btn, .register-btn {
+  --background: #4caf50; /* Verde claro */
+  color: #ffffff;
+  margin-top: 20px;
+  border-radius: 10px;
+  font-weight: bold;
+  animation: slideInUp 1s ease-in-out;
+  transition: transform 0.2s;
+  padding: 1em;
+  font-size: 1em;
+}
+
+.login-btn:hover, .register-btn:hover {
+  transform: scale(1.05);
+}
+
+.register-btn {
+  --background: #f0f4f8;
+  color: #4caf50;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
   }
-  
-  form {
-    width: 100%;
-    max-width: 400px;
-    background-color: #ffffff; /* Fondo blanco */
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    animation: fadeIn 1s ease-in-out;
+  to {
+    opacity: 1;
   }
-  
-  ion-item {
-    margin-bottom: 15px;
-    --background: #e0f7fa; /* Fondo azul pastel */
-    --color: #333; /* Color de texto oscuro */
-    border-radius: 5px;
-    --highlight-color-focused: #a3d8f4; /* Color pastel para el borde cuando está enfocado */
-    animation: itemFadeIn 1s ease-in-out;
+}
+
+@keyframes bounceIn {
+  0%, 20%, 40%, 60%, 80%, 100% {
+    transform: translateY(0);
   }
-  
-  ion-input {
-    --background: transparent; /* Fondo transparente para que se vea el fondo del ion-item */
-    --placeholder-color: #666; /* Color de placeholder */
-    --color: #333; /* Color de texto oscuro */
-    --padding-start: 10px;
-    --padding-end: 10px;
+  50% {
+    transform: translateY(-10px);
   }
-  
-  .error-message {
-    color: #ff6f61; /* Color pastel para mensajes de error */
-    font-size: 14px;
-    margin-top: -10px;
-    margin-bottom: 10px;
-    padding-left: 10px;
+}
+
+@keyframes slideInUp {
+  from {
+    transform: translateY(100px);
+    opacity: 0;
   }
-  
-  ion-button {
-    margin-top: 15px;
-    --background: #a3d8f4; /* Azul pastel */
-    --background-hover: #92cce1; /* Azul pastel más oscuro */
-    --background-activated: #92cce1; /* Azul pastel más oscuro */
-    --color: #ffffff; /* Texto blanco */
-    animation: buttonFadeIn 1s ease-in-out;
+  to {
+    transform: translateY(0);
+    opacity: 1;
   }
-  
-  ion-button:last-child {
-    margin-top: 10px;
-    --background: #ffb3ba; /* Rosa pastel */
-    --background-hover: #ffa3a9; /* Rosa pastel más oscuro */
-    --background-activated: #ffa3a9; /* Rosa pastel más oscuro */
+}
+
+/* Adaptación responsiva para pantallas pequeñas */
+@media screen and (max-width: 600px) {
+  h1 {
+    font-size: 1.2em;
   }
-  
-  ion-button[disabled] {
-    --background: #d3d3d3; /* Gris claro */
+
+  .login-btn, .register-btn {
+    font-size: 0.9em;
+    padding: 0.8em;
   }
-  
-  ion-label {
-    color: #333; /* Color de texto oscuro */
-    animation: labelFadeIn 1s ease-in-out;
+
+  .container {
+    padding: 15px;
   }
-  
-  ion-toolbar {
-    --background: #ffd1dc; /* Rosa pastel */
-    --color: #333; /* Texto oscuro */
-    animation: toolbarFadeIn 1s ease-in-out;
+
+  .logo {
+    width: 35vw;
   }
-  
-  ion-title {
-    text-align: center;
-  }
-  
-  /* Animaciones */
-  @keyframes fadeIn {
-    from {
-      opacity: 0;
-    }
-    to {
-      opacity: 1;
-    }
-  }
-  
-  @keyframes itemFadeIn {
-    from {
-      opacity: 0;
-      transform: translateY(-10px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-  
-  @keyframes inputFadeIn {
-    from {
-      opacity: 0;
-      transform: translateY(-10px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-  
-  @keyframes buttonFadeIn {
-    from {
-      opacity: 0;
-      transform: translateY(10px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-  
-  @keyframes labelFadeIn {
-    from {
-      opacity: 0;
-      transform: translateX(-10px);
-    }
-    to {
-      opacity: 1;
-      transform: translateX(0);
-    }
-  }
-  
-  @keyframes toolbarFadeIn {
-    from {
-      opacity: 0;
-      transform: translateY(-10px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
+}

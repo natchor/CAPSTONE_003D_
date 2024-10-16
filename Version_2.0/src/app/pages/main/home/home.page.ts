@@ -5,13 +5,14 @@ import { MenuController } from '@ionic/angular';
 import { Router } from '@angular/router';
 import { RutinaService } from 'src/app/services/rutina.service';
 import { Rutina } from 'src/app/models/rutina.models';
+
 @Component({
   selector: 'app-home',
   templateUrl: './home.page.html',
   styleUrls: ['./home.page.scss'],
 })
 export class HomePage implements OnInit {
-
+  isMenuOpen: boolean = false;
   rutinas: Rutina[] = [];
   userId: string | null = null; 
 
@@ -48,7 +49,12 @@ export class HomePage implements OnInit {
     console.log("Cerrando sesión");
     
   }
-
+  toggleMenu() {
+    this.isMenuOpen = !this.isMenuOpen; 
+    
+  
+    // Alternar el estado del menú
+  }
 
 }
 

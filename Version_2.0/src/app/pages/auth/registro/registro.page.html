@@ -1,55 +1,75 @@
-<ion-header [translucent]="true" >
-  <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-button (click)="volver()">
-        <ion-icon slot="icon-only" name="arrow-back"></ion-icon>
-      </ion-button>
-    </ion-buttons>
-    <ion-title>registro</ion-title>
-  </ion-toolbar>
-</ion-header>
 
-<ion-content>
-  <div class="d-flex-center">
-    <form [formGroup]="form_register" (ngSubmit)="submit()">
-      <ion-item>
-        <ion-label position="floating">Email</ion-label>
-        <ion-input type="email" formControlName="email"  name="email" required></ion-input>
-      </ion-item>
-      <div>
-        <div *ngIf="form_register.get('email')?.touched && form_register.get('email')?.errors?.['required']">El correo es requerido</div>
-        <div *ngIf="form_register.get('email')?.touched && form_register.get('email')?.errors?.['email']">Ingrese un correo válido</div>
-      </div>
-      <ion-item>
-        <ion-label position="floating">Nombre</ion-label>
-        <ion-input type="text" formControlName="nombre"  name="nombre" required></ion-input>
-      </ion-item>
-      <div>
-        <div *ngIf="form_register.get('nombre')?.touched && form_register.get('nombre')?.errors?.['required']">El Nombre es requerido</div>
-        <div *ngIf="form_register.get('nombre')?.touched && form_register.get('nombre')?.errors?.['minlength']">Su nombre debe tener un mínimo de 2 caracteres</div>
-        <div *ngIf="form_register.get('nombre')?.touched && form_register.get('nombre')?.errors?.['maxlength']">Su nombre contiene demasiados caracteres</div>
-      </div>
-      <ion-item>
-        <ion-label position="floating">Edad</ion-label>
-        <ion-input type="number" formControlName="edad"  name="edad" required></ion-input>
-      </ion-item>
-      <div>
-          <div *ngIf="form_register.get('edad')?.touched && form_register.get('edad')?.errors?.['required']">La edad es requerida</div>
-          <div *ngIf="form_register.get('edad')?.touched && form_register.get('edad')?.errors?.['min']">Usted debe tener más de 12 años para registrarse</div>
-          <div *ngIf="form_register.get('edad')?.touched && form_register.get('edad')?.errors?.['max']">Usted sobrepasa la edad máxima existente</div>
-      </div>
-      <ion-item>
-        <ion-label position="floating">Password</ion-label>
-        <ion-input [type]="passwordType" formControlName="password" required></ion-input>
-        <ion-button (click)="mostrar_contra()" slot="end" fill="clear" shape="round">
-          <ion-icon [name]="passwordIcon"></ion-icon>
-        </ion-button>
-      </ion-item>
-      <div>
-        <div *ngIf="form_register.get('password')?.touched && form_register.get('password')?.errors?.['required']">La contraseña es requerida</div>
-        <div *ngIf="form_register.get('password')?.touched && form_register.get('password')?.errors?.['minlength']">La contraseña debe contener un mínimo de 6 caracteres</div>
-      </div>
-      <ion-button  expand="full"type="submit" [disabled]="form_register.invalid">Registrarse</ion-button>
-    </form>
-  </div> 
+
+<ion-content class="registro-content">
+  <div class="container">
+    <!-- Título "REGISTRO" centrado -->
+    <h1 class="registro-title">Registro</h1>
+
+    <div class="d-flex-center">
+      <form [formGroup]="form_register" (ngSubmit)="submit()">
+        <ion-item>
+          <ion-label position="floating">Email</ion-label>
+          <ion-input type="email" formControlName="email" name="email" required></ion-input>
+        </ion-item>
+        <div class="error-message" *ngIf="form_register.get('email')?.touched && form_register.get('email')?.errors?.['required']">
+          El correo es requerido
+        </div>
+        <div class="error-message" *ngIf="form_register.get('email')?.touched && form_register.get('email')?.errors?.['email']">
+          Ingrese un correo válido
+        </div>
+
+        <ion-item>
+          <ion-label position="floating">Nombre</ion-label>
+          <ion-input type="text" formControlName="nombre" name="nombre" required></ion-input>
+        </ion-item>
+        <div class="error-message" *ngIf="form_register.get('nombre')?.touched && form_register.get('nombre')?.errors?.['required']">
+          El nombre es requerido
+        </div>
+        <div class="error-message" *ngIf="form_register.get('nombre')?.touched && form_register.get('nombre')?.errors?.['minlength']">
+          Su nombre debe tener un mínimo de 2 caracteres
+        </div>
+        <div class="error-message" *ngIf="form_register.get('nombre')?.touched && form_register.get('nombre')?.errors?.['maxlength']">
+          Su nombre contiene demasiados caracteres
+        </div>
+
+        <ion-item>
+          <ion-label position="floating">Edad</ion-label>
+          <ion-input type="number" formControlName="edad" name="edad" required></ion-input>
+        </ion-item>
+        <div class="error-message" *ngIf="form_register.get('edad')?.touched && form_register.get('edad')?.errors?.['required']">
+          La edad es requerida
+        </div>
+        <div class="error-message" *ngIf="form_register.get('edad')?.touched && form_register.get('edad')?.errors?.['min']">
+          Debe tener más de 12 años
+        </div>
+        <div class="error-message" *ngIf="form_register.get('edad')?.touched && form_register.get('edad')?.errors?.['max']">
+          Supera la edad máxima
+        </div>
+
+        <ion-item>
+          <ion-label position="floating">Contraseña</ion-label>
+          <ion-input [type]="passwordType" formControlName="password" required></ion-input>
+          <ion-button (click)="mostrar_contra()" slot="end" fill="clear" shape="round">
+            <ion-icon [name]="passwordIcon"></ion-icon>
+          </ion-button>
+        </ion-item>
+        <div class="error-message" *ngIf="form_register.get('password')?.touched && form_register.get('password')?.errors?.['required']">
+          La contraseña es requerida
+        </div>
+        <div class="error-message" *ngIf="form_register.get('password')?.touched && form_register.get('password')?.errors?.['minlength']">
+          Debe tener al menos 6 caracteres
+        </div>
+
+        <ion-button expand="full" type="submit" [disabled]="form_register.invalid">Registrarse</ion-button>
+
+        <!-- Texto para iniciar sesión -->
+        <div class="login-text">
+          ¿Posees una cuenta? <a routerLink="/auth">Inicia sesión</a>
+        </div>
+      </form>
+    </div>
+  </div>
 </ion-content>
+
+<!-- Agrega este enlace dentro de la etiqueta <head> de tu index.html -->
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400&family=Dancing+Script:wght@400&display=swap" rel="stylesheet">
