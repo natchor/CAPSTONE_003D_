@@ -10,7 +10,7 @@
 </ion-header>
 
 <ion-content>
-  <form [formGroup]="routineForm" (ngSubmit)="enviar_rutina()">
+  <form [formGroup]="routineForm">
     <ion-list>
 
       <ion-item>
@@ -43,6 +43,10 @@
 
     </ion-list>
 
-    <ion-button expand="block" type="submit" [disabled]="!routineForm.valid">Crear rutina</ion-button>
+   <!-- Botón para ingresar y validar las actividades -->
+  <ion-button expand="full" (click)="validarActividades()">Ingresar Actividades</ion-button>
+
+  <!-- Botón para crear y guardar las actividades después de validarlas -->
+  <ion-button expand="full" color="primary" (click)="crearActividades()">Crear Actividades</ion-button>
   </form>
 </ion-content>

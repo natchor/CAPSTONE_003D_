@@ -46,43 +46,64 @@ export class FirebaseService {
   }
 
   // Método para obtener rutinas del día
-  async getRutinasDelDia(userId: string, dia: string): Promise<Rutina[]> {
-    try {
-      // Cambiamos la referencia para que 'dia' sea una subcolección de 'rutinas'
-      const actividadesSnapshot = await this.firestore.collection(`users/${userId}/rutinas`).doc(dia).collection('actividades').get().toPromise();
-      const actividades: Rutina[] = [];
-      
-      // Iteramos sobre los documentos de la subcolección 'actividades'
-      actividadesSnapshot.forEach(doc => {
-        const data = doc.data();
-        if (data && typeof data === 'object') {
-          actividades.push({ id: doc.id, ...data } as Rutina);
-        } else {
-          console.warn(`El documento ${doc.id} no contiene un objeto válido`);
-        }
+  getRutinasDelDia(userId: string, dia: string) {
+    return this.firestore
+      .collection(`users/${userId}/rutina-semanal/${dia}/actividades`)
+      .get()
+      .toPromise()
+      .then((snapshot) => {
+        const actividades = [];
+        snapshot.forEach((doc) => {
+          actividades.push(doc.data());
+        });
+        return actividades;
       });
-      
-      return actividades;
-    } catch (error) {
-      console.error('Error al obtener rutinas del día:', error);
-      throw error; // Lanzamos el error para que se maneje en el componente
-    }
   }
-  
-  
 
-  // Método para guardar una nueva rutina
-  async guardarRutina(userId: string, dia: string, rutina: Rutina): Promise<void> {
-    try {
-      // Guardamos la rutina dentro de la subcolección 'actividades' bajo el día especificado
-      await this.firestore.collection(`users/${userId}/rutinas`).doc(dia).collection('actividades').add(rutina);
-      console.log('Rutina guardada con éxito');
-    } catch (error) {
-      console.error('Error al guardar la rutina:', error);
-      throw error;
-    }
+  // 2. Validar que la hora de fin sea mayor que la hora de inicio
+  validarHoras(horaInicio: string, horaFin: string): boolean {
+    const inicio = new Date(`1970-01-01T${horaInicio}`);
+    const fin = new Date(`1970-01-01T${horaFin}`);
+    return fin > inicio;
   }
-  
+
+  // 3. Verificar colisiones de horarios
+  hayColision(actividades: any[], nuevaHoraInicio: string, nuevaHoraFin: string): boolean {
+    const nuevaInicio = new Date(`1970-01-01T${nuevaHoraInicio}`);
+    const nuevaFin = new Date(`1970-01-01T${nuevaHoraFin}`);
+
+    for (const actividad of actividades) {
+      const actividadInicio = new Date(`1970-01-01T${actividad.hora_inicio}`);
+      const actividadFin = new Date(`1970-01-01T${actividad.hora_fin}`);
+
+      if (
+        (nuevaInicio >= actividadInicio && nuevaInicio < actividadFin) || // La nueva actividad empieza dentro de otra
+        (nuevaFin > actividadInicio && nuevaFin <= actividadFin) ||       // La nueva actividad termina dentro de otra
+        (nuevaInicio <= actividadInicio && nuevaFin >= actividadFin)      // La nueva actividad abarca por completo a otra
+      ) {
+        return true; // Hay solapamiento
+      }
+    }
+
+    return false; // No hay solapamiento
+  }
+
+  // 4. Guardar rutinas validadas en Firebase
+ // 4. Guardar rutinas validadas en Firebase
+ async guardarRutinasEnBloque(userId: string, rutinas: any[]) {
+  const batch = this.firestore.firestore.batch();
+
+  rutinas.forEach((rutina) => {
+    const dia = rutina.dia; // Asegúrate de que cada rutina tenga un campo 'dia'
+    const docRef = this.firestore.collection(`users/${userId}/rutina-semanal`).doc(dia).collection('actividades').doc().ref;
+    batch.set(docRef, rutina); // Agregar la rutina al lote
+  });
+
+  return batch.commit(); // Ejecutar la transacción en bloque
+}
+
+
+
   
   // Cerrar sesión
   logout() {
